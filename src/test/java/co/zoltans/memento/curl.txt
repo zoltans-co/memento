@@ -1,0 +1,60 @@
+curl -X GET http://localhost:8080/api/v1/users
+
+curl -X GET http://localhost:8080/api/v1/users/1
+
+curl -X GET http://localhost:8080/api/v1/users/username/JaneDoe
+
+curl -X POST -H "Content-Type: application/json" \
+    -d '{"firstName":"John", "lastName":"Doe", "userName":"JohnDoe", "email":"j.doe@gmail.com", "password":"secret"}' \
+    http://localhost:8080/api/v1/users
+
+curl -X POST -H "Content-Type: application/json" \
+    -d '{"firstName":"Jane", "lastName":"Doe", "userName":"JaneDoe", "email":"jane.doe@gmail.com", "password":"secret"}' \
+    http://localhost:8080/api/v1/users
+
+curl -X POST -H "Content-Type: application/json" \
+    -d '{"reminder": "First test reminder for JohnDoe.", "priority": "MEDIUM"}' \
+    http://localhost:8080/api/v1/mementos/username/JohnDoe
+
+curl -X POST -H "Content-Type: application/json" \
+    -d '{"reminder": "Second test reminder for JohnDoe.", "priority": "MEDIUM"}' \
+    http://localhost:8080/api/v1/mementos/username/JohnDoe
+
+curl -X POST -H "Content-Type: application/json" \
+    -d '{"reminder": "First test reminder for JaneDoe.", "priority": "MEDIUM"}' \
+    http://localhost:8080/api/v1/mementos/username/JaneDoe
+
+curl -X POST -H "Content-Type: application/json" \
+    -d '{"reminder": "Second test reminder for JaneDoe.", "priority": "MEDIUM"}' \
+    http://localhost:8080/api/v1/mementos/username/JaneDoe
+
+curl -X POST -H "Content-Type: application/json" \
+    -d '{"reminder": "Third test reminder for JaneDoe.", "priority": "MEDIUM"}' \
+    http://localhost:8080/api/v1/mementos/username/JaneDoe
+
+curl -X GET http://localhost:8080/api/v1/users/memento/JaneDoe
+
+curl -X DELETE http://localhost:8080/api/v1/mementos/59
+
+
+curl -X GET http://localhost:8080/api/v1/mementos
+
+curl -X GET http://localhost:8080/api/v1/mementos/59
+
+curl -X POST -H "Content-Type: application/json" \
+    -d '{"userId": "1", "reminder": "Some test reminder 1.", "priority": "MEDIUM"}' \
+    http://localhost:8080/api/v1/mementos
+
+curl -X POST -H "Content-Type: application/json" \
+    -d '{"userId": "1", "reminder": "Some test reminder 2.", "priority": "HIGH"}' \
+    http://localhost:8080/api/v1/mementos
+
+curl -X POST -H "Content-Type: application/json" \
+    -d '{"userId": "1", "reminder": "Some test reminder 3.", "priority": "LOW"}' \
+    http://localhost:8080/api/v1/mementos
+
+curl -X PUT -H "Content-Type: application/json" \
+    -d '{"id": "59", "userId": "1", "reminder": "Some test reminder 1 - Updated from MEDIUM to HIGH.", "priority": "HIGH"}' \
+    http://localhost:8080/api/v1/mementos/59
+
+curl -X DELETE http://localhost:8080/api/v1/mementos/39
